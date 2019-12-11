@@ -17,7 +17,11 @@ public class ControllerDB implements interfc{
     private String ID_pel;
 
     
-    private String Id_pelanggan,Username,Password,Nomer_KWH,Nama_pelanggan,Alamat,Id_tarif,daya,tarif;
+    private String Id_tagihan,Id_pelanggan,Username,Password,Nomer_KWH,Nama_pelanggan,Alamat,Id_tarif,daya;
+    private int tarif;
+    public String getId_tagihan() {
+        return Id_tagihan;
+    }
     private boolean statusPembayaran;
 
     public boolean getStatusPembayaran() {
@@ -28,7 +32,7 @@ public class ControllerDB implements interfc{
         return daya;
     }
 
-    public String getTarif() {
+    public int getTarif() {
         return tarif;
     }
     private boolean Status = false;
@@ -112,7 +116,7 @@ public class ControllerDB implements interfc{
                Nama_pelanggan = rs.getString("pelanggan.nama_pelanggan");
                ID_pel = rs.getString("id_pelanggan"); 
                daya = rs.getString("tarif.daya");
-               tarif = rs.getString("tarif.tarif_perkwh");
+               tarif = rs.getInt("tarif.tarif_perkwh");
                statusPembayaran = rs.getBoolean("tagihan.status");
                Status = true;
            }        
@@ -192,6 +196,44 @@ public class ControllerDB implements interfc{
         }
         return list;
     }
+    public void ViewPembayaran (String Id_Pelanggan, String Bulan) throws SQLException{
+        PreparedStatement st = koneksi.getConnection().prepareStatement("SELECT tagihan.id_tagihan,pelanggan.nama_pelanggan,tarif.daya,tarif.tarif_perkwh,tagihan.bulan FROM tagihan INNER JOIN pelanggan ON pelanggan.id_pelanggan = tagihan.id_pelanggan INNER JOIN tarif ON pelanggan.id_tarif = tarif.id_tarif where pelanggan.id_pelanggan=? and tagihan.bulan=?");
+        st.setString(1, Id_Pelanggan);
+        st.setString(2, Bulan);
+        ResultSet rs = st.executeQuery();
+        if(rs.next())
+        {
+           Id_tagihan = rs.getString("tagihan.id_tagihan");
+           Nama_pelanggan = rs.getString("pelanggan.nama_pelanggan");
+           daya = rs.getString("tarif.daya");
+           tarif = rs.getInt("tarif.tarif_perkwh");
+        }
+    }
+    public pembayaran insertPembayaran(pembayaran P) throws SQLException {
+        PreparedStatement st=koneksi.getConnection().prepareStatement
+        ("insert into pembayaran values(?,?,?,?,?,?,?,NULL)");
+        st.setString(1, P.getId_pembayaran());
+        st.setString(2, P.getId_tagihan());
+        st.setString(3, P.getId_pelanggan());
+        st.setInt(4, P.getTanggal());
+        st.setInt(5, P.getBulan());
+        st.setInt(6, P.getBiaya_admin());
+        st.setInt(7, P.getTotal_bayar());
+        
+        st.executeUpdate();
+        return P;
+    }
+     public void UpdatePelanggan(pelanggan p) throws SQLException{
+        PreparedStatement Pre=koneksi.getConnection().prepareStatement
+        ("update pelanggan set nama_pelanggan=?, alamat=?, nomerKWH=? where id_pelanggan=? ");
+        Pre.setString(1, p.getNama_pelanggan());
+        Pre.setString(2, p.getAlamat());
+        Pre.setString(3, p.getNomer_KWH());
+        Pre.setString(4, p.getId_pelanggan());
+        Pre.executeUpdate();
+        
+    }
+    
     public boolean getStatus() {
         return Status;
     }

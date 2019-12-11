@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -34,6 +35,10 @@ List<pelanggan> record = new ArrayList<pelanggan>();
         Tabel_pelanggan.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
             public void valueChanged(ListSelectionEvent e){
                 row = Tabel_pelanggan.getSelectedRow();
+                if(row!=-1)
+                {
+                    isiText();
+                }
             }
         });
         this.statusAwal();
@@ -46,6 +51,13 @@ List<pelanggan> record = new ArrayList<pelanggan>();
             Logger.getLogger(pengelolaan_pelanggan.class.getName()).log(Level.SEVERE,null,ex);
         }
     }
+     void isiText(){
+         pelanggan pl = record.get(row);
+         txt_id_pelanggan.setText(pl.getId_pelanggan());
+         txt_nama.setText(pl.getNama_pelanggan());
+         txt_alamat.setText(pl.getAlamat());
+         txt_nomorKWH.setText(pl.getNomer_KWH());
+     }
     void isiTabel(){
         Object data[][]=new Object[record.size()][4];
         int x=0;
@@ -63,8 +75,14 @@ List<pelanggan> record = new ArrayList<pelanggan>();
         Tabel_pelanggan.setModel(new DefaultTableModel(data,judul));
         jScrollPane.setViewportView(Tabel_pelanggan);
     } 
+    void KosongkanText(){
+        txt_id_pelanggan.setText("");
+         txt_nama.setText("");
+         txt_alamat.setText("");
+         txt_nomorKWH.setText("");
+    }
     private void statusAwal() {
-        
+        KosongkanText();
         loadData();
         isiTabel();
     }
@@ -85,14 +103,14 @@ List<pelanggan> record = new ArrayList<pelanggan>();
         jButton2 = new javax.swing.JButton();
         jScrollPane = new javax.swing.JScrollPane();
         Tabel_pelanggan = new javax.swing.JTable();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        txt_nama = new javax.swing.JTextField();
+        txt_alamat = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        txt_nomorKWH = new javax.swing.JTextField();
+        txt_id_pelanggan = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -142,12 +160,19 @@ List<pelanggan> record = new ArrayList<pelanggan>();
         jLabel6.setText("nomer KWH");
 
         jButton7.setText("ubah");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("id_pelanggan");
 
         jButton8.setText("hapus");
+
+        txt_id_pelanggan.setEditable(false);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 51));
 
@@ -192,15 +217,15 @@ List<pelanggan> record = new ArrayList<pelanggan>();
                                     .addComponent(jLabel6))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_nomorKWH, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_nama, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_alamat, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jButton7)
                                         .addGap(36, 36, 36)
                                         .addComponent(jButton8))
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(txt_id_pelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(128, 128, 128)
                         .addComponent(jButton2)
@@ -219,21 +244,21 @@ List<pelanggan> record = new ArrayList<pelanggan>();
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_id_pelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton7)
                     .addComponent(jButton8)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_alamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_nomorKWH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -270,6 +295,25 @@ List<pelanggan> record = new ArrayList<pelanggan>();
         La.setVisible(true);
                 
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        try
+        {
+            ControllerDB control = new ControllerDB();
+            pelanggan p = new pelanggan();
+            p.setId_pelanggan(txt_id_pelanggan.getText());
+            p.setNama_pelanggan(txt_nama.getText());
+            p.setAlamat(txt_alamat.getText());
+            p.setNomer_KWH(txt_nomorKWH.getText());
+            control.UpdatePelanggan(p);
+            this.statusAwal();
+            JOptionPane.showMessageDialog(null, "Data Telah Dirubah");
+        }
+        catch(SQLException ex)
+        {
+            
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -321,11 +365,9 @@ List<pelanggan> record = new ArrayList<pelanggan>();
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField txt_alamat;
+    private javax.swing.JTextField txt_id_pelanggan;
+    private javax.swing.JTextField txt_nama;
+    private javax.swing.JTextField txt_nomorKWH;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2019 at 03:48 PM
+-- Generation Time: Dec 11, 2019 at 04:45 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -96,12 +96,21 @@ CREATE TABLE `pembayaran` (
   `id_pembayaran` varchar(11) NOT NULL,
   `id_tagihan` varchar(11) NOT NULL,
   `id_pelanggan` varchar(11) NOT NULL,
-  `tanggal_pembayaran` date NOT NULL,
-  `bulan_bayar` date NOT NULL,
+  `tanggal_pembayaran` int(11) NOT NULL,
+  `bulan_bayar` int(11) NOT NULL,
   `biaya_admin` int(9) NOT NULL,
   `total_bayar` int(9) NOT NULL,
-  `id_admin` varchar(11) NOT NULL
+  `id_admin` varchar(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pembayaran`
+--
+
+INSERT INTO `pembayaran` (`id_pembayaran`, `id_tagihan`, `id_pelanggan`, `tanggal_pembayaran`, `bulan_bayar`, `biaya_admin`, `total_bayar`, `id_admin`) VALUES
+('PAY123', 'T225', 'P113', 12, 11, 2500, 25555, NULL),
+('PAY124', 'T225', 'P113', 12, 11, 2500, 25555, NULL),
+('PAY22', 'T225', 'P113', 1, 11, 2500, 7500, NULL);
 
 -- --------------------------------------------------------
 

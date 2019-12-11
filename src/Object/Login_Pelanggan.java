@@ -6,6 +6,7 @@ package Object;
 import Driver.Menu;
 import java.sql.*;
 import InterfaceDB.ControllerDB;
+import java.util.Random;
 
 import javax.swing.JOptionPane;
 
@@ -235,7 +236,6 @@ ControllerDB Control = new ControllerDB();
     }//GEN-LAST:event_DaftarActionPerformed
 
     private void masukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masukActionPerformed
-
         try
         {
             Control.login_pel(txt_username.getText(),txt_password.getText());

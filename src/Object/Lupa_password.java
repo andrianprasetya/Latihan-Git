@@ -6,6 +6,7 @@ package Object;
 
 import InterfaceDB.ControllerDB;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -76,8 +77,6 @@ ControllerDB Control = new ControllerDB();
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel4.setText("LUPA PASSWORD");
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("D:\\Programming\\PLN\\PLN2.png")); // NOI18N
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -137,7 +136,7 @@ ControllerDB Control = new ControllerDB();
                     .addComponent(txt_Username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(Ganti_password)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -170,6 +169,10 @@ ControllerDB Control = new ControllerDB();
             ganti.TampungData(Control.getID_pel());
             this.setVisible(false);
             ganti.setVisible(true);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "ID Tidak Ditemukan");
         }
     }//GEN-LAST:event_Ganti_passwordActionPerformed
 

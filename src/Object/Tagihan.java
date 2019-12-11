@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class Tagihan extends javax.swing.JFrame {
 private static String IDP[] = new String[1];
+private static String Bulan[] = new String[1];
     /**
      * Creates new form Tagihan
      */
@@ -57,6 +58,7 @@ ControllerDB control = new ControllerDB();
         jPanel1 = new javax.swing.JPanel();
         R_Lunas = new javax.swing.JRadioButton();
         R_BelumLunas = new javax.swing.JRadioButton();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,7 +90,6 @@ ControllerDB control = new ControllerDB();
         });
 
         txt_bulan.setEditable(false);
-        txt_bulan.setText("Mounth");
         txt_bulan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_bulanActionPerformed(evt);
@@ -199,7 +200,6 @@ ControllerDB control = new ControllerDB();
         R_Lunas.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         R_Lunas.setForeground(new java.awt.Color(255, 255, 255));
         R_Lunas.setText("Lunas");
-        R_Lunas.setEnabled(false);
         R_Lunas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 R_LunasActionPerformed(evt);
@@ -211,7 +211,6 @@ ControllerDB control = new ControllerDB();
         R_BelumLunas.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         R_BelumLunas.setForeground(new java.awt.Color(255, 255, 255));
         R_BelumLunas.setText("Belum Lunas");
-        R_BelumLunas.setEnabled(false);
         R_BelumLunas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 R_BelumLunasActionPerformed(evt);
@@ -239,6 +238,10 @@ ControllerDB control = new ControllerDB();
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Bulan");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -251,7 +254,6 @@ ControllerDB control = new ControllerDB();
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel2)
@@ -263,18 +265,25 @@ ControllerDB control = new ControllerDB();
                                             .addComponent(btn_cari)
                                             .addComponent(txt_IDTagihan, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(Combo_Bulan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(txt_bulan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel11)
                                             .addComponent(jLabel9)
                                             .addComponent(jLabel10))
-                                        .addGap(25, 25, 25)
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                                .addGap(25, 25, 25)
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                                        .addGap(57, 57, 57)
+                                                        .addComponent(txt_Nama, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(txt_daya, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txt_tarif, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addGap(57, 57, 57)
-                                                .addComponent(txt_Nama, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(txt_daya, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txt_tarif, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                .addGap(82, 82, 82)
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(txt_bulan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(159, 159, 159)
                                 .addComponent(jLabel1)))
@@ -314,7 +323,8 @@ ControllerDB control = new ControllerDB();
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_bulan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel11))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_daya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -366,10 +376,10 @@ ControllerDB control = new ControllerDB();
     private void btn_cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cariActionPerformed
         
         
-        String value = Combo_Bulan.getSelectedItem().toString();
+        Bulan[0] = Combo_Bulan.getSelectedItem().toString();
         try
         {
-            control.Tagih(IDP[0], txt_IDTagihan.getText(), value);
+            control.Tagih(IDP[0], txt_IDTagihan.getText(), Bulan[0]);
         }
         catch(SQLException ex)
         {
@@ -378,9 +388,9 @@ ControllerDB control = new ControllerDB();
          if(control.getNama_pelanggan() != null)
          {
             txt_Nama.setText(control.getNama_pelanggan());
-            txt_bulan.setText(value);     
+            txt_bulan.setText(Bulan[0]);     
             txt_daya.setText(control.getDaya());
-            txt_tarif.setText(control.getTarif());
+            txt_tarif.setText(String.valueOf(control.getTarif()));
             if(control.getStatusPembayaran()== true)
             {
                 R_Lunas.setSelected(true);
@@ -408,7 +418,8 @@ ControllerDB control = new ControllerDB();
         Pembayaran payment = new Pembayaran();
         if(R_BelumLunas.isSelected()){
         this.setVisible(false);
-        payment.setVisible(true);
+        payment.main(IDP,Bulan);
+        
         }
         else
         {
@@ -491,6 +502,7 @@ ControllerDB control = new ControllerDB();
     private javax.swing.JButton info_pelanggan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
