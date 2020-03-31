@@ -6,13 +6,21 @@
 package Pelanggan;
 
 import Driver.Login;
-import InterfaceDB.koneksi;
+import KoneksiDB.koneksi;
 import Model.modelPelanggan;
 import java.sql.*;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.Random;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -588,6 +596,25 @@ public class BayarTagihan extends javax.swing.JFrame {
                       pre.setInt(7, TotalBayar);
                       pre.executeUpdate();
                       JOptionPane.showMessageDialog(null, "Payment Succesfull");
+                   String reportSource = null;
+                   String reportDest = null;
+           try{
+           HashMap hash = new HashMap();
+           
+           hash.put("ID", getID);
+           hash.put("bulan", comboBulan.getSelectedIndex()+1);
+           reportSource = System.getProperty("user.dir") +"/src/Report/report3.jrxml";
+           reportDest = System.getProperty("user.dir") +"/src/Report/report3.jasper";
+           JasperReport JR = JasperCompileManager.compileReport(reportSource);
+           JasperPrint jp = JasperFillManager.fillReport(JR, hash, conn);
+           JasperExportManager.exportReportToHtmlFile(jp,reportDest);
+           JasperViewer.viewReport(jp,false);
+           
+           }
+           catch(Exception ex)
+           {
+               System.out.println(ex.getMessage());
+           }
                  }
                 else
                 {

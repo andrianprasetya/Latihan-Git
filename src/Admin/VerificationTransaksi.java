@@ -5,10 +5,10 @@
  */
 package Admin;
 
-import Bank.Tagihan;
+import Model.modelTagihan;
 import Bank.Verification;
 import Driver.Login;
-import InterfaceDB.koneksi;
+import KoneksiDB.koneksi;
 import Model.modelPembayaran;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

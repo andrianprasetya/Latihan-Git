@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 package Admin;
-import Bank.Tagihan;
+import Model.modelTagihan;
 import Bank.Verification;
 import Driver.Login;
-import InterfaceDB.koneksi;
+import KoneksiDB.koneksi;
 import Model.modelPembayaran;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,9 +15,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -282,16 +284,13 @@ PreparedStatement pre=null;
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(74, 74, 74)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(62, 62, 62)
+                .addComponent(jButton2)
+                .addGap(58, 58, 58)
                 .addComponent(jButton6)
-                .addGap(83, 83, 83)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(39, 39, 39))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jButton2)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,14 +301,10 @@ PreparedStatement pre=null;
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
                         .addComponent(jButton6)
-                        .addComponent(jButton1)))
+                        .addComponent(jButton1)
+                        .addComponent(jButton2)))
                 .addContainerGap(19, Short.MAX_VALUE))
             .addComponent(jSeparator1)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jButton2)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 204));
@@ -395,18 +390,26 @@ PreparedStatement pre=null;
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        String reportSource = null;
+       String reportSource = null;
        String reportDest = null;
        
        try{
+            HashMap hash = new HashMap();
            
+            ImageIcon icon = new ImageIcon("src/image/Choose.png");
+            String n = (String)JOptionPane.showInputDialog(null, "Input ID ?*",null,JOptionPane.QUESTION_MESSAGE,icon,null,null);
+            
+            
+           if(n != null)
+           {
+           hash.put("ID", n);
            reportSource = System.getProperty("user.dir") +"/src/Report/report2.jrxml";
            reportDest = System.getProperty("user.dir") +"/src/Report/report2.jasper";
            JasperReport JR = JasperCompileManager.compileReport(reportSource);
-           JasperPrint jp = JasperFillManager.fillReport(JR, null, conn);
+           JasperPrint jp = JasperFillManager.fillReport(JR, hash, conn);
            JasperExportManager.exportReportToHtmlFile(jp,reportDest);
            JasperViewer.viewReport(jp,false);
-           
+           }
            
        }catch(Exception ex){
            System.out.println(ex.getMessage());

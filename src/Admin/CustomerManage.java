@@ -9,7 +9,7 @@ package Admin;
 
 
 import Driver.Login;
-import InterfaceDB.koneksi;
+import KoneksiDB.koneksi;
 import Model.modelPelanggan;
 import Pelanggan.Register;
 import java.sql.Connection;

@@ -7,7 +7,7 @@ package Driver;
 import Admin.CustomerManage;
 import Bank.Verification;
 import Model.*;
-import InterfaceDB.koneksi;
+import KoneksiDB.koneksi;
 import Pelanggan.BayarTagihan;
 import Pelanggan.Register;
 import java.sql.*;
@@ -186,7 +186,7 @@ modelAdmin MA = new modelAdmin();
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Created.png"))); // NOI18N
-        jLabel6.setText("MADE By GROUP 3");
+        jLabel6.setText("@CopyRigh Group 3");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

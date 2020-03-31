@@ -5,10 +5,10 @@
  */
 package Pelanggan;
 
-import Bank.Tagihan;
+import Model.modelTagihan;
 import Bank.Verification;
 import Driver.Login;
-import InterfaceDB.koneksi;
+import KoneksiDB.koneksi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,7 +36,7 @@ public class InfoTagihan extends javax.swing.JFrame {
         Statement  stat=null;
         Connection conn= koneksi.getConnection();;
         ResultSet rs=null,rs1=null;
-       List<Tagihan> record = new ArrayList<Tagihan>();
+       List<modelTagihan> record = new ArrayList<modelTagihan>();
     int row;
     /**
      * Creates new form InfoTagihan
@@ -72,9 +72,9 @@ public class InfoTagihan extends javax.swing.JFrame {
         
         rs = pre.executeQuery();
         
-        List<Tagihan> list = new ArrayList<Tagihan>();
+        List<modelTagihan> list = new ArrayList<modelTagihan>();
         while(rs.next()){
-            Tagihan png = new Tagihan();
+            modelTagihan png = new modelTagihan();
             png.setId_tagihan(rs.getString("tagihan.id_tagihan"));
             png.setNamaPelanggan(rs.getString("pelanggan.nama_pelanggan"));
             png.setAlamat(rs.getString("pelanggan.alamat"));
@@ -110,7 +110,7 @@ public class InfoTagihan extends javax.swing.JFrame {
         Object data[][]=new Object[record.size()][7];
         int x=0;
         
-        for(Tagihan png:record)
+        for(modelTagihan png:record)
         {    
          
             data[x][0] = png.getNamaPelanggan();

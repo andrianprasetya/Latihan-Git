@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 package Bank;
+import Model.modelTagihan;
 import Driver.Login;
-import InterfaceDB.koneksi;
+import KoneksiDB.koneksi;
 import Model.modelPelanggan;
 import java.awt.Component;
 import java.sql.*;
@@ -32,7 +33,7 @@ public class Verification extends javax.swing.JFrame {
         Statement  stat=null;
         Connection conn= koneksi.getConnection();;
         ResultSet rs=null;
-       List<Tagihan> record = new ArrayList<Tagihan>();
+       List<modelTagihan> record = new ArrayList<modelTagihan>();
     int row;
     /**
      * Creates new form Verification
@@ -53,7 +54,7 @@ public class Verification extends javax.swing.JFrame {
         this.statusAwal(); 
     }
     void isiText(){
-         Tagihan png = record.get(row);
+         modelTagihan png = record.get(row);
          id_tagihan = png.getId_tagihan();
          txt_NamaPelanggan.setText(png.getNamaPelanggan());
          txt_alamat.setText(png.getAlamat());
@@ -83,9 +84,9 @@ public class Verification extends javax.swing.JFrame {
         pre.setInt(1, 0);
         rs = pre.executeQuery();
         
-        List<Tagihan> list = new ArrayList<Tagihan>();
+        List<modelTagihan> list = new ArrayList<modelTagihan>();
         while(rs.next()){
-            Tagihan png = new Tagihan();
+            modelTagihan png = new modelTagihan();
             png.setId_tagihan(rs.getString("tagihan.id_tagihan"));
             png.setNamaPelanggan(rs.getString("pelanggan.nama_pelanggan"));
             png.setAlamat(rs.getString("pelanggan.alamat"));
@@ -110,7 +111,7 @@ public class Verification extends javax.swing.JFrame {
         Object data[][]=new Object[record.size()][7];
         int x=0;
         
-        for(Tagihan png:record)
+        for(modelTagihan png:record)
         {       
             data[x][0] = png.getNamaPelanggan();
             data[x][1] = png.getAlamat();

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="379" pageHeight="625" columnWidth="339" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4d1b339d-133f-4a39-afb3-2e0600dd0ce4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ID" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="bulan" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from pembayaran Inner JOIN tagihan ON pembayaran.id_tagihan = tagihan.id_tagihan Inner join pelanggan on tagihan.id_pelanggan = pelanggan.id_pelanggan INNER JOIN penggunaan ON tagihan.id_penggunaan = penggunaan.id_penggunaan where pelanggan.id_pelanggan=$P{ID} and penggunaan.bulan=$P{bulan}]]>
+	</queryString>
+	<field name="id_pembayaran" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_tagihan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_pelanggan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tanggal_pembayaran" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bulan_bayar" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="biaya_admin" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total_bayar" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_admin" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_penggunaan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bulan" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tahun" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jumlah_meter" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Username" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Password" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomor_KWH" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_pelanggan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alamat" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_tarif" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="meter_awal" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="meter_akhir" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="62" splitType="Stretch">
+			<staticText>
+				<reportElement x="78" y="11" width="194" height="35" uuid="ae85c870-8ff4-446a-942b-527616172ac3"/>
+				<textElement>
+					<font fontName="Times New Roman" size="24"/>
+				</textElement>
+				<text><![CDATA[E-PAY POSTPAID]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="268" splitType="Stretch">
+			<textField>
+				<reportElement x="191" y="14" width="100" height="20" uuid="12d89cb4-ee81-406a-8248-cbd7a47b1d02"/>
+				<textFieldExpression><![CDATA[$F{id_pelanggan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="78" y="14" width="100" height="20" uuid="8da04b86-e994-4567-80b6-1dec9a100a69"/>
+				<text><![CDATA[ID Customer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="78" y="34" width="100" height="20" uuid="f8db8f70-d979-49ea-98bd-9d7a98b737f2"/>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="191" y="34" width="116" height="20" uuid="3e5234f2-4a8a-439c-b3e4-24965dd0d397"/>
+				<textFieldExpression><![CDATA[$F{nama_pelanggan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="78" y="54" width="113" height="20" uuid="e0bbdc0b-4f33-4867-8caf-af76861e926b"/>
+				<text><![CDATA[Payment Date]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="191" y="54" width="29" height="20" uuid="72485144-d3d0-418a-beff-f93bf7064837"/>
+				<textFieldExpression><![CDATA[$F{tanggal_pembayaran} + " - "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="210" y="54" width="100" height="20" uuid="b6c79909-c359-4814-9408-03f2dd62d980"/>
+				<textFieldExpression><![CDATA[$F{bulan_bayar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="191" y="168" width="100" height="20" uuid="9b8b62c2-2023-499a-bb91-dad1c95620e4"/>
+				<textFieldExpression><![CDATA[$F{meter_akhir}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="191" y="201" width="100" height="20" uuid="9a11c606-b684-4f80-8d6a-c9303a6415c5"/>
+				<textFieldExpression><![CDATA[$F{biaya_admin}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="72" y="137" width="100" height="20" uuid="7979c38a-85cc-4b7c-ad29-9a603d6537f4"/>
+				<text><![CDATA[Initial meter]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="231" width="100" height="20" uuid="bfd88ce4-2757-44a3-ba9b-cbbbe70c6a7c"/>
+				<text><![CDATA[total pay]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="201" width="100" height="20" uuid="a87a2e23-0aa8-48f4-95c1-4f4f10942cb8"/>
+				<text><![CDATA[Admin fee]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="43" y="103" width="100" height="20" uuid="03b5056e-5162-4cc6-b419-8f2541e0d768"/>
+				<text><![CDATA[Details]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="168" width="100" height="20" uuid="2216d811-3d2c-472e-87bf-d8358a335a59"/>
+				<text><![CDATA[Final Meter]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="191" y="137" width="100" height="20" uuid="258ed34a-1ef7-4d26-9070-f57d4db16628"/>
+				<textFieldExpression><![CDATA[$F{meter_awal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="191" y="231" width="100" height="20" uuid="b8d0e053-7d76-48b1-89f6-4f4a153f4745"/>
+				<textFieldExpression><![CDATA[$F{total_bayar}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="92" width="339" height="1" uuid="1beb1914-7c9e-4e1a-adc9-b94ae3edb2f5"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

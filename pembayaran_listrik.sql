@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 23, 2020 at 06:17 PM
+-- Generation Time: Mar 31, 2020 at 06:45 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -83,7 +83,15 @@ CREATE TABLE `pelanggan` (
 --
 
 INSERT INTO `pelanggan` (`id_pelanggan`, `Username`, `Password`, `nomor_KWH`, `nama_pelanggan`, `alamat`, `id_tarif`) VALUES
-('P01', 'andri', '12345', '1420120201235', 'Andrian', 'Bandung', 'RS004');
+('P01', 'andri', '12345', '1420120201235', 'Andrian', 'Bandung', 'RS004'),
+('P02', 'kevin', '12345', '1431320201137', 'Kevin Fauzan', 'Rancamanyar', 'RS002'),
+('P03', 'yoga', '12345', '1431320201138', 'Yoga Mahendra', 'Cibogo', 'RS003'),
+('P04', 'dindin', '12345', '1431320201139', 'Dindin Wahyudin', 'Cibedug', 'RS001'),
+('P05', 'aldi', '12345', '1431320201139', 'Aldi Adiyatna', 'Banjaran', 'RS004'),
+('P06', 'roch', '12345', '1431320201140', 'Rochendi', 'Singgasana', 'RS003'),
+('P07', 'alhad', '12345', '1431320201141', 'Alhad abdilah', 'Cibedug', 'RS004'),
+('P08', 'fajar', '12345', '1431320201142', 'Fajar Wisnu Mukti', 'Kebon Kopi', 'RS002'),
+('P09', 'hilmy', '12345', '1431320201143', 'Hilmy Alfauzi', 'Bojong Koneng', 'RS002');
 
 -- --------------------------------------------------------
 
@@ -108,7 +116,7 @@ CREATE TABLE `pembayaran` (
 
 INSERT INTO `pembayaran` (`id_pembayaran`, `id_tagihan`, `id_pelanggan`, `tanggal_pembayaran`, `bulan_bayar`, `biaya_admin`, `total_bayar`, `id_admin`) VALUES
 ('PAY01', 'T01', 'P01', 27, 2, 2500, 372172, NULL),
-('PAY02', 'T02', 'P01', 29, 2, 2500, 54828, NULL),
+('PAY02', 'T02', 'P01', 29, 2, 2500, 54828, 'AD01'),
 ('PAY03', 'T03', 'P01', 31, 3, 2500, 625372, NULL);
 
 -- --------------------------------------------------------
@@ -132,8 +140,16 @@ CREATE TABLE `penggunaan` (
 
 INSERT INTO `penggunaan` (`id_penggunaan`, `id_pelanggan`, `bulan`, `tahun`, `meter_awal`, `meter_akhir`) VALUES
 ('PG01', 'P01', '1', '2020', 581, 143),
+('PG010', 'P08', '3', '2020', 609, 341),
+('PG011', 'P09', '3', '2020', 254, 6),
 ('PG02', 'P01', '2', '2020', 2094, 2032),
-('PG03', 'P01', '3', '2020', 3078, 2340);
+('PG03', 'P01', '3', '2020', 3078, 2340),
+('PG04', 'P02', '3', '2020', 725, 607),
+('PG05', 'P03', '3', '2020', 642, 514),
+('PG06', 'P04', '3', '2020', 737, 104),
+('PG07', 'P05', '3', '2020', 2977, 2569),
+('PG08', 'P06', '3', '2020', 1774, 1369),
+('PG09', 'P07', '3', '2020', 3084, 2731);
 
 -- --------------------------------------------------------
 
@@ -157,8 +173,16 @@ CREATE TABLE `tagihan` (
 
 INSERT INTO `tagihan` (`id_tagihan`, `id_penggunaan`, `id_pelanggan`, `bulan`, `tahun`, `jumlah_meter`, `status`) VALUES
 ('T01', 'PG01', 'P01', 1, 2020, 438, 1),
+('T010', 'PG010', 'P08', 3, 2020, 268, 0),
+('T011', 'PG011', 'P09', 3, 2020, 248, 0),
 ('T02', 'PG02', 'P01', 2, 2020, 62, 1),
-('T03', 'PG03', 'P01', 3, 2020, 738, 0);
+('T03', 'PG03', 'P01', 3, 2020, 738, 0),
+('T04', 'PG04', 'P02', 3, 2020, 118, 0),
+('T05', 'PG05', 'P03', 3, 2020, 128, 0),
+('T06', 'PG06', 'P04', 3, 2020, 633, 0),
+('T07', 'PG07', 'P05', 3, 2020, 408, 0),
+('T08', 'PG08', 'P06', 3, 2020, 405, 0),
+('T09', 'PG09', 'P07', 3, 2020, 353, 0);
 
 -- --------------------------------------------------------
 

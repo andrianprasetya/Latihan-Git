@@ -6,7 +6,7 @@
 package Admin;
 import Admin.CustomerManage;
 import Driver.Login;
-import InterfaceDB.koneksi;
+import KoneksiDB.koneksi;
 import Model.modelPelanggan;
 import java.sql.*;
 import java.util.Random;

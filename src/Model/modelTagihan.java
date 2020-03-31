@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Bank;
+package Model;
 
 /**
  *
  * @author user
  */
-public class Tagihan {
+public class modelTagihan {
 
     public String getId_tagihan() {
         return id_tagihan;

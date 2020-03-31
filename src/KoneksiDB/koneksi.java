@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package InterfaceDB;
+package KoneksiDB;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 package Bank;
+import Model.modelTagihan;
 import Driver.Login;
-import InterfaceDB.koneksi;
+import KoneksiDB.koneksi;
 import Model.modelPelanggan;
 import java.awt.Component;
 import java.sql.*;
@@ -48,7 +49,7 @@ public class ReportBank extends javax.swing.JFrame {
         Statement  stat=null;
         Connection conn= koneksi.getConnection();;
         ResultSet rs=null;
-       List<Tagihan> record = new ArrayList<Tagihan>();
+       List<modelTagihan> record = new ArrayList<modelTagihan>();
     int row;
     public ReportBank() {
         initComponents();
@@ -89,9 +90,9 @@ public class ReportBank extends javax.swing.JFrame {
         pre.setInt(1, 1);
         rs = pre.executeQuery();
         
-        List<Tagihan> list = new ArrayList<Tagihan>();
+        List<modelTagihan> list = new ArrayList<modelTagihan>();
         while(rs.next()){
-            Tagihan png = new Tagihan();
+            modelTagihan png = new modelTagihan();
             png.setId_tagihan(rs.getString("tagihan.id_tagihan"));
             png.setNamaPelanggan(rs.getString("pelanggan.nama_pelanggan"));
             png.setAlamat(rs.getString("pelanggan.alamat"));
@@ -116,7 +117,7 @@ public class ReportBank extends javax.swing.JFrame {
         Object data[][]=new Object[record.size()][7];
         int x=0;
         
-        for(Tagihan png:record)
+        for(modelTagihan png:record)
         {       
             data[x][0] = png.getNamaPelanggan();
             data[x][1] = png.getAlamat();
@@ -330,7 +331,8 @@ public class ReportBank extends javax.swing.JFrame {
        String reportDest = null;
        
        try{
-           HashMap hash = new HashMap();
+           HashMap hash ,hosh;
+           hash = new HashMap();
            String[] options = {"Januari","February","March","April","May","June","July","August","September","October","November","December"};
             ImageIcon icon = new ImageIcon("src/image/Choose.png");
             String n = (String)JOptionPane.showInputDialog(null, "Select Month *", 

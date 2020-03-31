@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="21d5a357-5dbe-4433-9ea7-51d22ca0884e">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="720" pageHeight="985" columnWidth="680" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="21d5a357-5dbe-4433-9ea7-51d22ca0884e">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
-		<![CDATA[select pelanggan.nama_pelanggan,tagihan.bulan,tagihan.tahun,tanggal_pembayaran,bulan_bayar,pelanggan.nomor_KWH,tagihan.status from pembayaran Inner JOIN tagihan ON pembayaran.id_tagihan = tagihan.id_tagihan Inner join pelanggan on tagihan.id_pelanggan = pelanggan.id_pelanggan where status=1 and id_admin IS NOT NULL]]>
+	<parameter name="ID" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select pelanggan.nama_pelanggan,tagihan.bulan,tagihan.tahun,tanggal_pembayaran,bulan_bayar,pelanggan.nomor_KWH,tagihan.status from pembayaran Inner JOIN tagihan ON pembayaran.id_tagihan = tagihan.id_tagihan Inner join pelanggan on tagihan.id_pelanggan = pelanggan.id_pelanggan where status=1 and id_admin IS NOT NULL and pelanggan.id_pelanggan=$P{ID}]]>
 	</queryString>
 	<field name="nama_pelanggan" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -33,7 +36,7 @@
 	<title>
 		<band height="72">
 			<frame>
-				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="13eba191-82b4-4132-8e35-75de218ec792"/>
+				<reportElement mode="Opaque" x="-20" y="-20" width="721" height="92" backcolor="#006699" uuid="13eba191-82b4-4132-8e35-75de218ec792"/>
 				<staticText>
 					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="c022e935-ee0d-49d3-8010-f4107ead8fb8"/>
 					<textElement>
@@ -50,52 +53,52 @@
 	<columnHeader>
 		<band height="21">
 			<line>
-				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="32d72be6-5c9b-4834-89a0-a364b670500e"/>
+				<reportElement x="-20" y="20" width="700" height="1" forecolor="#666666" uuid="32d72be6-5c9b-4834-89a0-a364b670500e"/>
 			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="086d5317-5c96-413e-9524-ca2528e31452"/>
+				<reportElement mode="Opaque" x="0" y="0" width="124" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="086d5317-5c96-413e-9524-ca2528e31452"/>
 				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Nama]]></text>
+				<text><![CDATA[Customer Name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="79" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="7a3d95c1-2266-4651-ab1a-c43fc917492f"/>
+				<reportElement mode="Opaque" x="124" y="0" width="90" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="7a3d95c1-2266-4651-ab1a-c43fc917492f"/>
 				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Bulan]]></text>
+				<text><![CDATA[Bills Month]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="158" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="9b3bf9c2-ac66-45bd-8a5e-577ddd483b1a"/>
-				<textElement>
-					<font size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[tahun]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="237" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="2e53f828-9320-4ceb-81ea-99ae884b132a"/>
-				<textElement>
-					<font size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[TGL_bayar]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="316" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="57709e88-6f15-4238-9245-0406294ce103"/>
+				<reportElement mode="Opaque" x="214" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="9b3bf9c2-ac66-45bd-8a5e-577ddd483b1a"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[BLN_bayar]]></text>
+				<text><![CDATA[Bills year]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="395" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="9dddf78f-5168-42ca-905e-12af03c324b5"/>
+				<reportElement mode="Opaque" x="293" y="0" width="99" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="2e53f828-9320-4ceb-81ea-99ae884b132a"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pay Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="392" y="0" width="92" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="57709e88-6f15-4238-9245-0406294ce103"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pay Month]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="484" y="0" width="117" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="9dddf78f-5168-42ca-905e-12af03c324b5"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[No KWH]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="474" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="75050b31-7fc3-4c4a-9ee4-0af2bd9d53e1"/>
+				<reportElement mode="Opaque" x="601" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="75050b31-7fc3-4c4a-9ee4-0af2bd9d53e1"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
@@ -106,53 +109,53 @@
 	<detail>
 		<band height="20">
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="799cf7f5-a633-45e7-8e6c-2b2cb1144035"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="680" height="1" uuid="799cf7f5-a633-45e7-8e6c-2b2cb1144035"/>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="0" y="0" width="79" height="20" uuid="8f07912a-f627-4aba-b27c-412129600828"/>
+				<reportElement x="0" y="0" width="124" height="20" uuid="8f07912a-f627-4aba-b27c-412129600828"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nama_pelanggan}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="79" y="0" width="79" height="20" uuid="34791e53-b68d-40b2-910c-3aabb8cc31e8"/>
-				<textElement>
+				<reportElement x="124" y="0" width="79" height="20" uuid="34791e53-b68d-40b2-910c-3aabb8cc31e8"/>
+				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{bulan}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="158" y="0" width="79" height="20" uuid="1aba6617-6cc9-4e91-9ce4-182ae07b5bab"/>
-				<textElement>
+				<reportElement x="214" y="0" width="79" height="20" uuid="1aba6617-6cc9-4e91-9ce4-182ae07b5bab"/>
+				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tahun}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="237" y="0" width="79" height="20" uuid="0657ad39-d8d6-43cd-ab8d-fe0ec23d88df"/>
-				<textElement>
+				<reportElement x="304" y="0" width="79" height="20" uuid="0657ad39-d8d6-43cd-ab8d-fe0ec23d88df"/>
+				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tanggal_pembayaran}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="316" y="0" width="79" height="20" uuid="fd0bb9ab-46a5-4718-bbab-97c805a158e2"/>
-				<textElement>
+				<reportElement x="392" y="0" width="92" height="20" uuid="fd0bb9ab-46a5-4718-bbab-97c805a158e2"/>
+				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{bulan_bayar}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="395" y="0" width="79" height="20" uuid="d71efbac-7655-4257-acf4-7b15fee4ca29"/>
+				<reportElement x="484" y="0" width="117" height="20" uuid="d71efbac-7655-4257-acf4-7b15fee4ca29"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nomor_KWH}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="474" y="0" width="79" height="20" uuid="f0f80777-92f0-4f3a-830c-4c9f11d1caaa"/>
-				<textElement>
+				<reportElement x="601" y="0" width="79" height="20" uuid="f0f80777-92f0-4f3a-830c-4c9f11d1caaa"/>
+				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
@@ -165,16 +168,16 @@
 	<pageFooter>
 		<band height="17">
 			<textField>
-				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="d4372d6d-8f4a-4317-b6b1-a61dc364a143"/>
+				<reportElement mode="Opaque" x="0" y="4" width="568" height="13" backcolor="#E6E6E6" uuid="d4372d6d-8f4a-4317-b6b1-a61dc364a143"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
-				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="c58a3d4a-9cee-438a-938a-535d5a71565c"/>
+				<reportElement mode="Opaque" x="568" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="c58a3d4a-9cee-438a-938a-535d5a71565c"/>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="0" y="4" width="100" height="13" uuid="9cce388f-19d6-482e-bc9c-ac6c2cd5226a"/>
+				<reportElement x="53" y="4" width="100" height="13" uuid="9cce388f-19d6-482e-bc9c-ac6c2cd5226a"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 		</band>
